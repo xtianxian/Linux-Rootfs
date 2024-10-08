@@ -1,0 +1,5 @@
+**/rootfs/
+**/tmp/
+**/ubuntu-gui/
+.vscode
+__pycache__
