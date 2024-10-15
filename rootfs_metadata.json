@@ -1,0 +1,182 @@
+{
+    "distributions": [
+        {
+            "name": "Alpine",
+            "versions": {
+                "3.20.3": {
+                    "codename": "Alpine-3.20.3",
+                    "architectures": {
+                        "amd64": {
+                            "file_name": "alpine-3.20.3-amd64-rootfs.tar.gz",
+                            "download_size": 3490290,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/alpine/3.20.3/amd64/alpine-3.20.3-amd64-rootfs.tar.gz",
+                            "md5_checksum": "f3fa65ef8ce9b9e0e022125a97eb4b38"
+                        },
+                        "arm64": {
+                            "file_name": "alpine-3.20.3-arm64-rootfs.tar.gz",
+                            "download_size": 3947906,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/alpine/3.20.3/arm64/alpine-3.20.3-arm64-rootfs.tar.gz",
+                            "md5_checksum": "afa788cbda482faf5d1633f6fdc30d37"
+                        },
+                        "armhf": {
+                            "file_name": "alpine-3.20.3-armhf-rootfs.tar.gz",
+                            "download_size": 3255452,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/alpine/3.20.3/armhf/alpine-3.20.3-armhf-rootfs.tar.gz",
+                            "md5_checksum": "29cc14408f134cf2693853589fa1f376"
+                        },
+                        "i386": {
+                            "file_name": "alpine-3.20.3-i386-rootfs.tar.gz",
+                            "download_size": 3348048,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/alpine/3.20.3/i386/alpine-3.20.3-i386-rootfs.tar.gz",
+                            "md5_checksum": "02817d425aef49a3ee521243dc08f701"
+                        }
+                    }
+                },
+                "3.19.4": {
+                    "codename": "Alpine-3.19.4",
+                    "architectures": {
+                        "amd64": {
+                            "file_name": "alpine-3.19.4-amd64-rootfs.tar.gz",
+                            "download_size": 3299369,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/alpine/3.19.4/amd64/alpine-3.19.4-amd64-rootfs.tar.gz",
+                            "md5_checksum": "5d024d71da7834c7ee579477e9d5da51"
+                        },
+                        "arm64": {
+                            "file_name": "alpine-3.19.4-arm64-rootfs.tar.gz",
+                            "download_size": 3227020,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/alpine/3.19.4/arm64/alpine-3.19.4-arm64-rootfs.tar.gz",
+                            "md5_checksum": "c98acd46c7099b33c30f51fdf6b70a91"
+                        },
+                        "armhf": {
+                            "file_name": "alpine-3.19.4-armhf-rootfs.tar.gz",
+                            "download_size": 3068085,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/alpine/3.19.4/armhf/alpine-3.19.4-armhf-rootfs.tar.gz",
+                            "md5_checksum": "28bdc226e94c110a1320f7b8ff6f58d8"
+                        },
+                        "i386": {
+                            "file_name": "alpine-3.19.4-i386-rootfs.tar.gz",
+                            "download_size": 3143101,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/alpine/3.19.4/i386/alpine-3.19.4-i386-rootfs.tar.gz",
+                            "md5_checksum": "e6956f33b794120e9c79e31e914d6dc9"
+                        }
+                    }
+                },
+                "3.18.9": {
+                    "codename": "Alpine-3.18.9",
+                    "architectures": {
+                        "amd64": {
+                            "file_name": "alpine-3.18.9-amd64-rootfs.tar.gz",
+                            "download_size": 3292753,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/alpine/3.18.9/amd64/alpine-3.18.9-amd64-rootfs.tar.gz",
+                            "md5_checksum": "6a2b8f702474b950eb65acd4271ca507"
+                        },
+                        "arm64": {
+                            "file_name": "alpine-3.18.9-arm64-rootfs.tar.gz",
+                            "download_size": 3212758,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/alpine/3.18.9/arm64/alpine-3.18.9-arm64-rootfs.tar.gz",
+                            "md5_checksum": "24798bbcf5fdb010be712a959a13dc28"
+                        },
+                        "armhf": {
+                            "file_name": "alpine-3.18.9-armhf-rootfs.tar.gz",
+                            "download_size": 3043833,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/alpine/3.18.9/armhf/alpine-3.18.9-armhf-rootfs.tar.gz",
+                            "md5_checksum": "4a1a8eb5c269562858503972d2642838"
+                        },
+                        "i386": {
+                            "file_name": "alpine-3.18.9-i386-rootfs.tar.gz",
+                            "download_size": 3143952,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/alpine/3.18.9/i386/alpine-3.18.9-i386-rootfs.tar.gz",
+                            "md5_checksum": "c04e9c03110f6a1a94fbd2452003b7e7"
+                        }
+                    }
+                },
+                "3.17.10": {
+                    "codename": "Alpine-3.17.10",
+                    "architectures": {
+                        "amd64": {
+                            "file_name": "alpine-3.17.10-amd64-rootfs.tar.gz",
+                            "download_size": 3275855,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/alpine/3.17.10/amd64/alpine-3.17.10-amd64-rootfs.tar.gz",
+                            "md5_checksum": "d2c63acc92c3439ce2521e8649e5103e"
+                        },
+                        "arm64": {
+                            "file_name": "alpine-3.17.10-arm64-rootfs.tar.gz",
+                            "download_size": 3146365,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/alpine/3.17.10/arm64/alpine-3.17.10-arm64-rootfs.tar.gz",
+                            "md5_checksum": "caf1877549c17b5e3d58a2b372662913"
+                        },
+                        "armhf": {
+                            "file_name": "alpine-3.17.10-armhf-rootfs.tar.gz",
+                            "download_size": 3014352,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/alpine/3.17.10/armhf/alpine-3.17.10-armhf-rootfs.tar.gz",
+                            "md5_checksum": "68ded52755593f27d86c0ede6146bf56"
+                        },
+                        "i386": {
+                            "file_name": "alpine-3.17.10-i386-rootfs.tar.gz",
+                            "download_size": 3320612,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/alpine/3.17.10/i386/alpine-3.17.10-i386-rootfs.tar.gz",
+                            "md5_checksum": "ddb0ed4e4ce90217ddc0372e19cca69a"
+                        }
+                    }
+                },
+                "3.16.9": {
+                    "codename": "Alpine-3.16.9",
+                    "architectures": {
+                        "amd64": {
+                            "file_name": "alpine-3.16.9-amd64-rootfs.tar.gz",
+                            "download_size": 2722681,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/alpine/3.16.9/amd64/alpine-3.16.9-amd64-rootfs.tar.gz",
+                            "md5_checksum": "3e72f8cb44e0a5fe206fb577dd2c58ab"
+                        },
+                        "arm64": {
+                            "file_name": "alpine-3.16.9-arm64-rootfs.tar.gz",
+                            "download_size": 2616563,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/alpine/3.16.9/arm64/alpine-3.16.9-arm64-rootfs.tar.gz",
+                            "md5_checksum": "d61e574fd851242a724b41547c4b85bd"
+                        },
+                        "armhf": {
+                            "file_name": "alpine-3.16.9-armhf-rootfs.tar.gz",
+                            "download_size": 2531887,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/alpine/3.16.9/armhf/alpine-3.16.9-armhf-rootfs.tar.gz",
+                            "md5_checksum": "fe6e64d27d800702c8541d290baf8715"
+                        },
+                        "i386": {
+                            "file_name": "alpine-3.16.9-i386-rootfs.tar.gz",
+                            "download_size": 2733069,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/alpine/3.16.9/i386/alpine-3.16.9-i386-rootfs.tar.gz",
+                            "md5_checksum": "e406836a19985ca2629c7b4f0cdec4ab"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Ubuntu",
+            "versions": {
+                "22.04": {
+                    "codename": "Jammy Jellyfish",
+                    "architectures": {
+                        "amd64": {
+                            "file_name": "ubuntu-22.04-amd64-rootfs.tar.gz",
+                            "download_size": 74938664,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/22.04/amd64/ubuntu-22.04-amd64-rootfs.tar.gz",
+                            "md5_checksum": "99511feea6d0c3e2c37e46e7a45fdbf1"
+                        },
+                        "arm64": {
+                            "file_name": "ubuntu-22.04-arm64-rootfs.tar.gz",
+                            "download_size": 72426682,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/22.04/arm64/ubuntu-22.04-arm64-rootfs.tar.gz",
+                            "md5_checksum": "92ceaf488891fb811788523409b2cc4b"
+                        },
+                        "armhf": {
+                            "file_name": "ubuntu-22.04-armhf-rootfs.tar.gz",
+                            "download_size": 69508929,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/22.04/armhf/ubuntu-22.04-armhf-rootfs.tar.gz",
+                            "md5_checksum": "426f33737b76725a9bfaf1aa6293cc75"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}
