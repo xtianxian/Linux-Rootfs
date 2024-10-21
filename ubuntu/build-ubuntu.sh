@@ -11,7 +11,7 @@ fi
 SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
 
 # Define architectures (debootstrap naming)
-ARCHS=("arm64" "armhf" "amd64" "i386")  # Using debootstrap naming
+ARCHS=("arm64")  # Using debootstrap naming
 
 # Define Ubuntu version mapping (version number -> code name)
 declare -A UBUNTU_VERSION_MAP
@@ -120,7 +120,7 @@ for UBUNTU_VERSION in "${!UBUNTU_VERSION_MAP[@]}"; do
 
         # Step 2: Use debootstrap to create the base system with necessary packages
         echo "Bootstrapping Ubuntu $UBUNTU_VERSION ($ARCH) with necessary packages..."
-        sudo debootstrap --arch=$ARCH --foreign --components=main,universe,multiverse --variant=minbase --include=apt,apt-utils,sudo,dbus,dbus-x11,wget,curl,vim,net-tools,lsb-release,locales,tzdata,passwd,bash-completion,command-not-found $CODE_NAME $ROOTFS_DIR $REPO_URL
+        sudo debootstrap --arch=$ARCH --foreign --components=main,universe,multiverse --variant=minbase --include=apt,apt-utils,dbus,dbus-x11,wget,curl,vim,net-tools,lsb-release,locales,tzdata,passwd,bash-completion,command-not-found $CODE_NAME $ROOTFS_DIR $REPO_URL
 
         # Check if debootstrap command was successful
         if [ $? -ne 0 ]; then
@@ -257,7 +257,7 @@ EOF
 
         # Always add libdisableselinux.so to /etc/ld.so.preload for all Ubuntu versions
         echo "Adding libdisableselinux.so for $UBUNTU_VERSION ($ARCH)..."
-        add_libdisableselinux $ARCH $ROOTFS_DIR
+        #add_libdisableselinux $ARCH $ROOTFS_DIR
 
         # Step 9: Cleanup
 
