@@ -120,7 +120,7 @@ for UBUNTU_VERSION in "${!UBUNTU_VERSION_MAP[@]}"; do
 
         # Step 2: Use debootstrap to create the base system with necessary packages
         echo "Bootstrapping Ubuntu $UBUNTU_VERSION ($ARCH) with necessary packages..."
-        sudo debootstrap --arch=$ARCH --foreign --components=main,universe,multiverse --variant=minbase --include=apt,apt-utils,dbus,dbus-x11,wget,curl,vim,net-tools,lsb-release,locales,tzdata,passwd,bash-completion,command-not-found $CODE_NAME $ROOTFS_DIR $REPO_URL
+        sudo debootstrap --arch=$ARCH --foreign --components=main,universe,multiverse --variant=minbase --include=apt,dbus,dbus-x11,wget,curl,vim,net-tools,lsb-release,locales,tzdata,passwd,bash-completion $CODE_NAME $ROOTFS_DIR $REPO_URL
 
         # Check if debootstrap command was successful
         if [ $? -ne 0 ]; then
@@ -205,17 +205,7 @@ deb $REPO_URL $CODE_NAME-updates main universe multiverse
 deb $REPO_URL $CODE_NAME-security main universe multiverse
 EOF
 
-        # Add the prepared bash.bashrc file (located beside the script)
-        PREPARED_BASHRC="$SCRIPT_DIR/bash.bashrc"
 
-        if [ -f "$PREPARED_BASHRC" ]; then
-            echo "Copying prepared bash.bashrc to $ROOTFS_DIR/etc/bash.bashrc..."
-            sudo cp "$PREPARED_BASHRC" "$ROOTFS_DIR/etc/bash.bashrc"
-            sudo chmod 644 "$ROOTFS_DIR/etc/bash.bashrc"  # Set proper permissions
-        else
-            echo "Prepared bash.bashrc file not found at $PREPARED_BASHRC. Exiting."
-            exit 1
-        fi
 
         # Create /etc/fstab
         echo "Creating /etc/fstab in the rootfs..."

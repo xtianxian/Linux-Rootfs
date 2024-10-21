@@ -158,9 +158,9 @@
                     "architectures": {
                         "arm64": {
                             "file_name": "ubuntu-22.04-arm64-rootfs.tar.gz",
-                            "download_size": 71403505,
+                            "download_size": 70832848,
                             "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/22.04/arm64/ubuntu-22.04-arm64-rootfs.tar.gz",
-                            "md5_checksum": "32bfccb94611b98a4a8cfad07a973987"
+                            "md5_checksum": "a41468161078a918c47c239f97bbe400"
                         }
                     }
                 },
@@ -169,9 +169,9 @@
                     "architectures": {
                         "arm64": {
                             "file_name": "ubuntu-20.04-arm64-rootfs.tar.gz",
-                            "download_size": 72258045,
+                            "download_size": 71661970,
                             "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/20.04/arm64/ubuntu-20.04-arm64-rootfs.tar.gz",
-                            "md5_checksum": "7b33b746e6e9ad6fa41792751e504d6d"
+                            "md5_checksum": "b6a21329b46caf7486bb76e684953a91"
                         }
                     }
                 },
@@ -180,20 +180,9 @@
                     "architectures": {
                         "arm64": {
                             "file_name": "ubuntu-16.04-arm64-rootfs.tar.gz",
-                            "download_size": 75217603,
+                            "download_size": 65686636,
                             "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/16.04/arm64/ubuntu-16.04-arm64-rootfs.tar.gz",
-                            "md5_checksum": "cbc21a6beafaba13539b2b7aa9a37333"
-                        }
-                    }
-                },
-                "14.04": {
-                    "codename": "Trusty Tahr",
-                    "architectures": {
-                        "arm64": {
-                            "file_name": "ubuntu-14.04-arm64-rootfs.tar.gz",
-                            "download_size": 67356042,
-                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/14.04/arm64/ubuntu-14.04-arm64-rootfs.tar.gz",
-                            "md5_checksum": "3a2b49a1bf4676041e65446d4480414d"
+                            "md5_checksum": "4f947a5a9a00351c3dca4a952e87945a"
                         }
                     }
                 }
