@@ -153,90 +153,26 @@
         {
             "name": "Ubuntu",
             "versions": {
-                "24.04": {
-                    "codename": "Noble Numbat",
-                    "architectures": {
-                        "amd64": {
-                            "file_name": "ubuntu-24.04-amd64-rootfs.tar.gz",
-                            "download_size": 81049011,
-                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/24.04/amd64/ubuntu-24.04-amd64-rootfs.tar.gz",
-                            "md5_checksum": "465a5ada721cee307e3a699da7d238dc"
-                        },
-                        "arm64": {
-                            "file_name": "ubuntu-24.04-arm64-rootfs.tar.gz",
-                            "download_size": 79622490,
-                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/24.04/arm64/ubuntu-24.04-arm64-rootfs.tar.gz",
-                            "md5_checksum": "9a322969a9ad310a090b5eae5c154a8d"
-                        },
-                        "armhf": {
-                            "file_name": "ubuntu-24.04-armhf-rootfs.tar.gz",
-                            "download_size": 75796878,
-                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/24.04/armhf/ubuntu-24.04-armhf-rootfs.tar.gz",
-                            "md5_checksum": "45685da80bf428d097d61fc1ccccc5b5"
-                        },
-                        "i386": {
-                            "file_name": "ubuntu-24.04-i386-rootfs.tar.gz",
-                            "download_size": 84796369,
-                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/24.04/i386/ubuntu-24.04-i386-rootfs.tar.gz",
-                            "md5_checksum": "0d04116fee46bfa0928e0b9a95262b46"
-                        }
-                    }
-                },
                 "22.04": {
                     "codename": "Jammy Jellyfish",
                     "architectures": {
                         "amd64": {
                             "file_name": "ubuntu-22.04-amd64-rootfs.tar.gz",
-                            "download_size": 74939026,
+                            "download_size": 74931387,
                             "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/22.04/amd64/ubuntu-22.04-amd64-rootfs.tar.gz",
-                            "md5_checksum": "486fedb1304fc58114135bbf8139ad10"
+                            "md5_checksum": "ca6da297092eb549235527f77ab66e9a"
                         },
                         "arm64": {
                             "file_name": "ubuntu-22.04-arm64-rootfs.tar.gz",
-                            "download_size": 72434065,
+                            "download_size": 72429569,
                             "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/22.04/arm64/ubuntu-22.04-arm64-rootfs.tar.gz",
-                            "md5_checksum": "8e2abf6c743a031e8341e00948ded27c"
+                            "md5_checksum": "4af994bfa829935aaa530ad875b46ece"
                         },
                         "armhf": {
                             "file_name": "ubuntu-22.04-armhf-rootfs.tar.gz",
-                            "download_size": 69505869,
+                            "download_size": 69505768,
                             "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/22.04/armhf/ubuntu-22.04-armhf-rootfs.tar.gz",
-                            "md5_checksum": "daae596d12952cde6c79a6d8bd80877c"
-                        },
-                        "i386": {
-                            "file_name": "ubuntu-22.04-i386-rootfs.tar.gz",
-                            "download_size": 78538219,
-                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/22.04/i386/ubuntu-22.04-i386-rootfs.tar.gz",
-                            "md5_checksum": "263ffed8208e20668b7f0a5d52d63daa"
-                        }
-                    }
-                },
-                "20.04": {
-                    "codename": "Focal Fossa",
-                    "architectures": {
-                        "amd64": {
-                            "file_name": "ubuntu-20.04-amd64-rootfs.tar.gz",
-                            "download_size": 99929486,
-                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/20.04/amd64/ubuntu-20.04-amd64-rootfs.tar.gz",
-                            "md5_checksum": "a90c9eee826f80dfd5edaf13936f3c5d"
-                        },
-                        "arm64": {
-                            "file_name": "ubuntu-20.04-arm64-rootfs.tar.gz",
-                            "download_size": 97437252,
-                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/20.04/arm64/ubuntu-20.04-arm64-rootfs.tar.gz",
-                            "md5_checksum": "16eaead826ccab91bd96c20cf4a6fca1"
-                        },
-                        "armhf": {
-                            "file_name": "ubuntu-20.04-armhf-rootfs.tar.gz",
-                            "download_size": 91896847,
-                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/20.04/armhf/ubuntu-20.04-armhf-rootfs.tar.gz",
-                            "md5_checksum": "30d2fbfb99b0cd5b007c09bfe8473cd1"
-                        },
-                        "i386": {
-                            "file_name": "ubuntu-20.04-i386-rootfs.tar.gz",
-                            "download_size": 89636966,
-                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/20.04/i386/ubuntu-20.04-i386-rootfs.tar.gz",
-                            "md5_checksum": "fc32a796ac0213889224bb5fec326109"
+                            "md5_checksum": "b31899972d0de563cc495d4ad396090a"
                         }
                     }
                 }
