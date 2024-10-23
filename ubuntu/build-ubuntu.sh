@@ -260,7 +260,7 @@ EOF
 
         # Always add libdisableselinux.so to /etc/ld.so.preload for all Ubuntu versions
         echo "Adding libdisableselinux.so for $UBUNTU_VERSION ($ARCH)..."
-        add_libdisableselinux $ARCH $ROOTFS_DIR
+        #add_libdisableselinux $ARCH $ROOTFS_DIR
 
         # Step 9: Cleanup
 
