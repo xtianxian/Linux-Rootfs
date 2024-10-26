@@ -161,6 +161,12 @@
                             "download_size": 77878944,
                             "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/22.04/arm64/ubuntu-22.04-arm64-rootfs.tar.gz",
                             "md5_checksum": "1d6b66c2cdefeddf7d5097dd3e54d0d2"
+                        },
+                        "armhf": {
+                            "file_name": "ubuntu-22.04-armhf-rootfs.tar.gz",
+                            "download_size": 73714723,
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/22.04/armhf/ubuntu-22.04-armhf-rootfs.tar.gz",
+                            "md5_checksum": "03668935037aff7fc40a870dd7ead877"
                         }
                     }
                 }
