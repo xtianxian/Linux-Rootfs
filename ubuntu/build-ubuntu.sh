@@ -21,13 +21,6 @@ UBUNTU_VERSION_MAP=(
     ["24.04"]="noble"      # Ubuntu 24.04 LTS (Noble Numbat)
 )
 
-# URLs for the shared libraries
-declare -A SELINUX_LIBS
-SELINUX_LIBS["x86"]="https://github.com/CypherpunkArmory/UserLAnd-Assets-Debian/raw/master/assets/x86/libdisableselinux.so"
-SELINUX_LIBS["x86_64"]="https://github.com/CypherpunkArmory/UserLAnd-Assets-Debian/raw/master/assets/x86_64/libdisableselinux.so"
-SELINUX_LIBS["arm"]="https://github.com/CypherpunkArmory/UserLAnd-Assets-Debian/raw/master/assets/arm/libdisableselinux.so"
-SELINUX_LIBS["arm64"]="https://github.com/CypherpunkArmory/UserLAnd-Assets-Debian/raw/master/assets/arm64/libdisableselinux.so"
-
 enable_qemu() {
     local arch=$1  # Pass ARCH as an argument
     if [[ $arch == "arm64" ]]; then
@@ -48,42 +41,6 @@ disable_qemu() {
         echo "Disabling QEMU for armhf..."
         sudo update-binfmts --disable qemu-arm
     fi
-}
-
-# Function to add libdisableselinux.so to /usr/lib and update /etc/ld.so.preload
-add_libdisableselinux() {
-    local arch=$1  # Architecture
-    local rootfs_dir=$2  # Root filesystem directory
-
-    # Determine the URL based on architecture
-    case $arch in
-        "amd64")
-            lib_url="${SELINUX_LIBS["x86_64"]}"
-            ;;
-        "i386")
-            lib_url="${SELINUX_LIBS["x86"]}"
-            ;;
-        "armhf")
-            lib_url="${SELINUX_LIBS["arm"]}"
-            ;;
-        "arm64")
-            lib_url="${SELINUX_LIBS["arm64"]}"
-            ;;
-        *)
-            echo "Unsupported architecture: $arch"
-            return 1
-            ;;
-    esac
-
-    # Download the libdisableselinux.so and place it in /usr/lib
-    echo "Downloading libdisableselinux.so for $arch..."
-    wget -q -O $rootfs_dir/usr/lib/libdisableselinux.so $lib_url
-
-    # Add the library path to /etc/ld.so.preload
-    echo "Adding libdisableselinux.so to /etc/ld.so.preload..."
-    sudo tee $rootfs_dir/etc/ld.so.preload > /dev/null <<EOF
-/usr/lib/libdisableselinux.so
-EOF
 }
 
 # Loop over each Ubuntu version and ARCH to create rootfs
@@ -117,7 +74,7 @@ for UBUNTU_VERSION in "${!UBUNTU_VERSION_MAP[@]}"; do
 
         # Step 2: Use debootstrap to create the base system with necessary packages
         echo "Bootstrapping Ubuntu $UBUNTU_VERSION ($ARCH) with necessary packages..."
-        sudo debootstrap --arch=$ARCH --foreign --components=main,universe,multiverse --variant=minbase --include=apt,apt-utils,sudo,dbus,dbus-x11,wget,curl,vim,net-tools,lsb-release,locales,tzdata,passwd,bash-completion,command-not-found $CODE_NAME $ROOTFS_DIR $REPO_URL
+        sudo debootstrap --arch=$ARCH --foreign --components=main,universe,multiverse --variant=minbase --include=dbus-x11,locales,tzdata $CODE_NAME $ROOTFS_DIR $REPO_URL
 
         # Check if debootstrap command was successful
         if [ $? -ne 0 ]; then
@@ -159,13 +116,46 @@ for UBUNTU_VERSION in "${!UBUNTU_VERSION_MAP[@]}"; do
             exit 1
         fi
 
-        # Step 5: If Ubuntu version is 20.04, mark libc6 as "hold" using apt-mark
+        # Step 5: Configure /etc/apt/sources.list and resolv.conf before running apt commands
+        echo "Creating /etc/apt/sources.list in the rootfs..."
+        sudo tee $ROOTFS_DIR/etc/apt/sources.list > /dev/null <<EOF
+deb $REPO_URL $CODE_NAME main universe multiverse
+deb $REPO_URL $CODE_NAME-updates main universe multiverse
+deb $REPO_URL $CODE_NAME-security main universe multiverse
+EOF
+
+        echo "Creating /etc/resolv.conf for DNS resolution..."
+        sudo tee $ROOTFS_DIR/etc/resolv.conf > /dev/null <<EOF
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+nameserver 1.1.1.1
+nameserver 1.0.0.1
+EOF
+
+        # Step 6: Mount /dev, /proc, and /sys before running apt update/upgrade
+        echo "Mounting /dev, /proc, and /sys..."
+        sudo mount --bind /dev $ROOTFS_DIR/dev
+        sudo mount --bind /proc $ROOTFS_DIR/proc
+        sudo mount --bind /sys $ROOTFS_DIR/sys
+
+        # Step 7: Run apt update and apt upgrade
+        echo "Running apt update and apt upgrade..."
+        sudo chroot $ROOTFS_DIR /usr/bin/env DEBIAN_FRONTEND=noninteractive apt-get update
+        sudo chroot $ROOTFS_DIR /usr/bin/env DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
+
+        # Step 8: Lazy unmount /dev, /proc, and /sys after update/upgrade
+        echo "Lazy unmounting /dev, /proc, and /sys..."
+        sudo umount -l $ROOTFS_DIR/dev
+        sudo umount -l $ROOTFS_DIR/proc
+        sudo umount -l $ROOTFS_DIR/sys
+
+        # Step 9: If Ubuntu version is 20.04, mark libc6 as "hold" using apt-mark
         if [[ $UBUNTU_VERSION == "20.04" ]]; then
             echo "Marking libc6 as held to prevent upgrading on Ubuntu 20.04"
             sudo chroot $ROOTFS_DIR /usr/bin/env DEBIAN_FRONTEND=noninteractive apt-mark hold libc6
         fi
 
-        # Step 5: Configure locales (system-wide)
+        # Step 10: Configure locales (system-wide)
         echo "Configuring locales in the rootfs..."
         sudo tee $ROOTFS_DIR/etc/locale.gen > /dev/null <<EOF
 en_US.UTF-8 UTF-8
@@ -174,51 +164,10 @@ EOF
         sudo chroot $ROOTFS_DIR /usr/bin/env DEBIAN_FRONTEND=noninteractive update-locale LANG=en_US.UTF-8
         sudo chroot $ROOTFS_DIR /usr/bin/env DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales
 
-        # Step 6: Set user-specific locale by adding to .profile (including root)
-        echo "Configuring user-specific locales in .profile"
-        PROFILE_PATH="$ROOTFS_DIR/root/.profile"
-        if [ ! -f $PROFILE_PATH ]; then
-            echo "Creating .profile for root..."
-            sudo touch $PROFILE_PATH
-        fi
-
-        sudo tee -a $PROFILE_PATH > /dev/null <<EOF
-
-# Set user-specific locale for root
-export PS1='\[\e[32m\]\u@\h:\[\e[34m\]\w\[\e[0m\]# '
-export TERM=xterm-256color
-export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
-export HOME=/root
-export USER=root
-EOF
-
-        # Step 7: Create necessary files in the rootfs after the second stage
+        # Step 11: Create necessary files in the rootfs after the second stage
         echo "Creating necessary directories..."
         sudo mkdir -p $ROOTFS_DIR/etc/network
         sudo mkdir -p $ROOTFS_DIR/etc/apt
-
-        # Create /etc/apt/sources.list
-        echo "Creating /etc/apt/sources.list in the rootfs..."
-        sudo tee $ROOTFS_DIR/etc/apt/sources.list > /dev/null <<EOF
-deb $REPO_URL $CODE_NAME main universe multiverse
-deb $REPO_URL $CODE_NAME-updates main universe multiverse
-deb $REPO_URL $CODE_NAME-security main universe multiverse
-EOF
-
-        # Add the prepared bash.bashrc file (located beside the script)
-        PREPARED_BASHRC="$SCRIPT_DIR/bash.bashrc"
-
-        if [ -f "$PREPARED_BASHRC" ]; then
-            echo "Copying prepared bash.bashrc to $ROOTFS_DIR/etc/bash.bashrc..."
-            sudo cp "$PREPARED_BASHRC" "$ROOTFS_DIR/etc/bash.bashrc"
-            sudo chmod 644 "$ROOTFS_DIR/etc/bash.bashrc"  # Set proper permissions
-        else
-            echo "Prepared bash.bashrc file not found at $PREPARED_BASHRC. Exiting."
-            exit 1
-        fi
 
         # Create /etc/fstab
         echo "Creating /etc/fstab in the rootfs..."
@@ -238,16 +187,7 @@ allow-hotplug *
 iface * inet dhcp
 EOF
 
-        # Create /etc/resolv.conf for DNS (Google and Cloudflare DNS)
-        echo "Creating /etc/resolv.conf in the rootfs..."
-        sudo tee $ROOTFS_DIR/etc/resolv.conf > /dev/null <<EOF
-nameserver 8.8.8.8
-nameserver 8.8.4.4
-nameserver 1.1.1.1
-nameserver 1.0.0.1
-EOF
-
-        # Step 8: Add custom PS1 prompt and invoke motd in bashrc
+        # Step 12: Add custom PS1 prompt and invoke motd in bashrc
         echo "Configuring .bashrc with custom prompt and enabling motd..."
 
         # Add custom PS1 prompt and call motd
@@ -258,11 +198,7 @@ run-parts /etc/update-motd.d
 echo   # Add a new line after motd output
 EOF
 
-        # Always add libdisableselinux.so to /etc/ld.so.preload for all Ubuntu versions
-        echo "Adding libdisableselinux.so for $UBUNTU_VERSION ($ARCH)..."
-        #add_libdisableselinux $ARCH $ROOTFS_DIR
-
-        # Step 9: Cleanup
+        # Step 13: Cleanup
 
         # Remove apt cache
         sudo rm -rf $ROOTFS_DIR/var/lib/apt/lists/*
@@ -291,13 +227,13 @@ EOF
             sudo rm -f $ROOTFS_DIR/usr/bin/qemu-arm-static
         fi
 
-        # Step 10: Packaging the rootfs into a tar.gz archive...
+        # Step 14: Packaging the rootfs into a tar.gz archive...
         echo "Packaging the rootfs into a tar.gz archive..."
         pushd $ROOTFS_DIR > /dev/null
         sudo tar --numeric-owner -czf $TARBALL_NAME .
         popd > /dev/null
 
-        # Step 11: Generate MD5 checksum for the tar.gz archive
+        # Step 15: Generate MD5 checksum for the tar.gz archive
         echo "Generating MD5 checksum for $TARBALL_NAME"
         pushd $(dirname $TARBALL_NAME) > /dev/null
         md5sum $(basename $TARBALL_NAME) | sudo tee $(basename $MD5_FILE)
