@@ -11,14 +11,18 @@ fi
 SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
 
 # Define architectures (debootstrap naming)
+
 ARCHS=("arm64" "armhf" "amd64" "i386")  # Using debootstrap naming
 
 # Define Ubuntu version mapping (version number -> code name)
 declare -A UBUNTU_VERSION_MAP
 UBUNTU_VERSION_MAP=(
-    ["20.04"]="focal"      # Ubuntu 20.04 LTS (Focal Fossa)
-    ["22.04"]="jammy"      # Ubuntu 22.04 LTS (Jammy Jellyfish)
-    ["24.04"]="noble"      # Ubuntu 24.04 LTS (Noble Numbat)
+    #["14.04"]="trusty"      # Ubuntu 14.04 LTS (Trusty Tahr)
+    #["16.04"]="xenial"      # Ubuntu 16.04 LTS (Xenial Xerus)
+    #["18.04"]="bionic"      # Ubuntu 18.04 LTS (Bionic Beaver)
+    ["20.04"]="focal"       # Ubuntu 20.04 LTS (Focal Fossa)
+    ["22.04"]="jammy"       # Ubuntu 22.04 LTS (Jammy Jellyfish)
+    #["24.04"]="noble"       # Ubuntu 24.04 LTS (Noble Numbat)
 )
 
 # Enable QEMU for ARM emulation
@@ -100,7 +104,7 @@ for UBUNTU_VERSION in "${!UBUNTU_VERSION_MAP[@]}"; do
 
         # Step 2: Use debootstrap to create the base system with necessary packages
         echo "Bootstrapping Ubuntu $UBUNTU_VERSION ($ARCH) with necessary packages..."
-        sudo debootstrap --arch=$ARCH --foreign --components=main,universe,multiverse --variant=minbase --include=apt,apt-utils,sudo,dbus,dbus-x11,wget,curl,vim,net-tools,lsb-release,locales,tzdata,passwd,bash-completion,command-not-found $CODE_NAME $ROOTFS_DIR $REPO_URL
+        sudo debootstrap --arch=$ARCH --foreign --components=main,universe,multiverse --variant=minbase --include=apt,apt-utils,sudo,dbus,dbus-x11,wget,curl,net-tools,lsb-release,locales,tzdata,passwd,bash-completion,command-not-found,git $CODE_NAME $ROOTFS_DIR $REPO_URL
 
         # Check if debootstrap command was successful
         if [ $? -ne 0 ]; then
@@ -219,6 +223,19 @@ nameserver 8.8.4.4
 nameserver 1.1.1.1
 nameserver 1.0.0.1
 EOF
+
+        # Add the prepared bash.bashrc file (located beside the script)
+        PREPARED_BASHRC="$SCRIPT_DIR/bash.bashrc"
+
+        if [ -f "$PREPARED_BASHRC" ]; then
+            echo "Copying prepared bash.bashrc to $ROOTFS_DIR/etc/bash.bashrc..."
+            sudo cp "$PREPARED_BASHRC" "$ROOTFS_DIR/etc/bash.bashrc"
+            sudo chmod 644 "$ROOTFS_DIR/etc/bash.bashrc"  # Set proper permissions
+        else
+            echo "Prepared bash.bashrc file not found at $PREPARED_BASHRC. Exiting."
+            exit 1
+        fi
+
 
         # Step 9: Update and upgrade the system within the chroot
         echo "Updating and upgrading packages in the rootfs..."
