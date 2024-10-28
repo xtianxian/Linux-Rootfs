@@ -20,9 +20,9 @@ UBUNTU_VERSION_MAP=(
     #["14.04"]="trusty"      # Ubuntu 14.04 LTS (Trusty Tahr)
     #["16.04"]="xenial"      # Ubuntu 16.04 LTS (Xenial Xerus)
     #["18.04"]="bionic"      # Ubuntu 18.04 LTS (Bionic Beaver)
-    ["20.04"]="focal"       # Ubuntu 20.04 LTS (Focal Fossa)
+    #["20.04"]="focal"       # Ubuntu 20.04 LTS (Focal Fossa)
     ["22.04"]="jammy"       # Ubuntu 22.04 LTS (Jammy Jellyfish)
-    #["24.04"]="noble"       # Ubuntu 24.04 LTS (Noble Numbat)
+    ["24.04"]="noble"       # Ubuntu 24.04 LTS (Noble Numbat)
 )
 
 # Enable QEMU for ARM emulation
@@ -104,7 +104,7 @@ for UBUNTU_VERSION in "${!UBUNTU_VERSION_MAP[@]}"; do
 
         # Step 2: Use debootstrap to create the base system with necessary packages
         echo "Bootstrapping Ubuntu $UBUNTU_VERSION ($ARCH) with necessary packages..."
-        sudo debootstrap --arch=$ARCH --foreign --components=main,universe,multiverse --variant=minbase --include=apt,apt-utils,sudo,dbus,dbus-x11,wget,curl,net-tools,lsb-release,locales,tzdata,passwd,bash-completion,command-not-found,git $CODE_NAME $ROOTFS_DIR $REPO_URL
+        sudo debootstrap --arch=$ARCH --foreign --components=main,universe,multiverse --variant=minbase --include=dbus-x11,locales,tzdata $CODE_NAME $ROOTFS_DIR $REPO_URL
 
         # Check if debootstrap command was successful
         if [ $? -ne 0 ]; then
