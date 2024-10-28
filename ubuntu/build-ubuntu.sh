@@ -104,7 +104,7 @@ for UBUNTU_VERSION in "${!UBUNTU_VERSION_MAP[@]}"; do
 
         # Step 2: Use debootstrap to create the base system with necessary packages
         echo "Bootstrapping Ubuntu $UBUNTU_VERSION ($ARCH) with necessary packages..."
-        sudo debootstrap --arch=$ARCH --foreign --components=main,universe,multiverse --variant=minbase --include=dbus-x11,locales,tzdata $CODE_NAME $ROOTFS_DIR $REPO_URL
+        sudo debootstrap --arch=$ARCH --foreign --components=main,universe,multiverse --variant=minbase --include=apt,apt-utils,dbus,dbus-x11,locales,tzdata $CODE_NAME $ROOTFS_DIR $REPO_URL
 
         # Check if debootstrap command was successful
         if [ $? -ne 0 ]; then

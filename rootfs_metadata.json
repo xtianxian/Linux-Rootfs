@@ -158,27 +158,27 @@
                     "architectures": {
                         "amd64": {
                             "file_name": "ubuntu-24.04-amd64-rootfs.tar.gz",
-                            "download_size": 45426284,
+                            "download_size": 45882682,
                             "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/24.04/amd64/ubuntu-24.04-amd64-rootfs.tar.gz",
-                            "md5_checksum": "d834b265d32734ae7da11d595197dd7f"
+                            "md5_checksum": "cbe174ad57b0fe499703c8694c1e8266"
                         },
                         "arm64": {
                             "file_name": "ubuntu-24.04-arm64-rootfs.tar.gz",
-                            "download_size": 44369488,
+                            "download_size": 44811365,
                             "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/24.04/arm64/ubuntu-24.04-arm64-rootfs.tar.gz",
-                            "md5_checksum": "2411ae5a8a529528e236df4e914b1cdc"
+                            "md5_checksum": "46a2bdf0c1517c84942b577f25c92eaa"
                         },
                         "armhf": {
                             "file_name": "ubuntu-24.04-armhf-rootfs.tar.gz",
-                            "download_size": 42350574,
+                            "download_size": 42805152,
                             "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/24.04/armhf/ubuntu-24.04-armhf-rootfs.tar.gz",
-                            "md5_checksum": "fb7b2e1203d9f9475c864e88ae31d48f"
+                            "md5_checksum": "4cc4bf0fe29d546bd439072824718034"
                         },
                         "i386": {
                             "file_name": "ubuntu-24.04-i386-rootfs.tar.gz",
-                            "download_size": 48550586,
+                            "download_size": 49056524,
                             "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/24.04/i386/ubuntu-24.04-i386-rootfs.tar.gz",
-                            "md5_checksum": "0c7b70bb389f16d0401a643259fcc59a"
+                            "md5_checksum": "e8d85cb23b0ac6fd08e901c1775c1001"
                         }
                     }
                 },
@@ -187,27 +187,27 @@
                     "architectures": {
                         "amd64": {
                             "file_name": "ubuntu-22.04-amd64-rootfs.tar.gz",
-                            "download_size": 45170723,
+                            "download_size": 45406542,
                             "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/22.04/amd64/ubuntu-22.04-amd64-rootfs.tar.gz",
-                            "md5_checksum": "358c87c1ff670e8e2dc0153652ab50f1"
+                            "md5_checksum": "4c8861b74ad49908bc4fe8e018a53e03"
                         },
                         "arm64": {
                             "file_name": "ubuntu-22.04-arm64-rootfs.tar.gz",
-                            "download_size": 42945231,
+                            "download_size": 43162899,
                             "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/22.04/arm64/ubuntu-22.04-arm64-rootfs.tar.gz",
-                            "md5_checksum": "184b7edaaf1bb37cdfcab1f8dd65947c"
+                            "md5_checksum": "683a6494a5de311739b54557c798f570"
                         },
                         "armhf": {
                             "file_name": "ubuntu-22.04-armhf-rootfs.tar.gz",
-                            "download_size": 42068457,
+                            "download_size": 42300952,
                             "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/22.04/armhf/ubuntu-22.04-armhf-rootfs.tar.gz",
-                            "md5_checksum": "b2cb764fcecc717854a6091548045f18"
+                            "md5_checksum": "844fe3c34b38d48067b9330b628a3f83"
                         },
                         "i386": {
                             "file_name": "ubuntu-22.04-i386-rootfs.tar.gz",
-                            "download_size": 48198570,
+                            "download_size": 48453927,
                             "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/22.04/i386/ubuntu-22.04-i386-rootfs.tar.gz",
-                            "md5_checksum": "1d48a9dc676ab5410e0040f8076936aa"
+                            "md5_checksum": "a8fc88966372c6217d44346c7fadae75"
                         }
                     }
                 }
