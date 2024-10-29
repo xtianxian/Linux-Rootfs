@@ -184,6 +184,12 @@ export HOME=/root
 export USER=root
 EOF
 
+        # Step 7.1: Add localhost to /etc/hostname
+        echo "Setting hostname to 'localhost' in /etc/hostname..."
+        sudo tee $ROOTFS_DIR/etc/hostname > /dev/null <<EOF
+localhost
+EOF
+
         # Step 8: Create necessary files in the rootfs after the second stage
         echo "Creating necessary directories..."
         sudo mkdir -p $ROOTFS_DIR/etc/network
