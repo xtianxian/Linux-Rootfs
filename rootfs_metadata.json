@@ -165,7 +165,7 @@
                         "arm64": {
                             "file_name": "ubuntu-24.04-arm64-rootfs.tar.gz",
                             "download_size": 44814579,
-                            "download_url": "https://cdimage.ubuntu.com/ubuntu-base/releases/24.04/release/ubuntu-base-24.04.1-base-arm64.tar.gz",
+                            "download_url": "https://raw.githubusercontent.com/xtianxian/Linux-Rootfs/refs/heads/main/ubuntu/24.04/arm64/ubuntu-24.04-arm64-rootfs.tar.gz",
                             "md5_checksum": "507daacfdc55f5678f2d6b55dd388676"
                         },
                         "armhf": {
